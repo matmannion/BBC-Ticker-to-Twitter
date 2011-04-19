@@ -56,7 +56,7 @@ def get_news(url, filename, include_prompt=false)
 
 				tweet = "#{tweet} #{url}"
 
-				tweet = coder.decode(tweet.force_encoding('iso-8859-1').encode('us-ascii',undef: :replace, replace: ''))
+				tweet = coder.decode(tweet.force_encoding('iso-8859-1').encode('us-ascii', :undef => :replace, replace: ''))
 				db[longurl] = tweet
 				begin
 					client.update(tweet)

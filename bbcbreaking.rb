@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby1.9.1
 # encoding: utf-8
 
 require 'json'
@@ -56,7 +56,7 @@ def get_news(url, filename, include_prompt=false)
 
 				tweet = "#{tweet} #{url}"
 
-				tweet = coder.decode(tweet.force_encoding('iso-8859-1').encode('us-ascii',undef: :replace, replace: ''))
+				tweet = coder.decode(tweet.force_encoding('iso-8859-1').encode('us-ascii', :undef => :replace, :replace => ''))
 				db[longurl] = tweet
 				begin
 					client.update(tweet)
@@ -84,5 +84,5 @@ def to_file(map, filename)
 	end
 end
 
-get_news('http://www.bbc.co.uk/news/10284448/ticker.sjson', '/home/mat/pkgs/news.yaml', false)
-get_news('http://news.bbc.co.uk/sol/ukfs_sport/hi/front_page/ticker.json','/home/mat/pkgs/sports.yaml', true)
+get_news('http://www.bbc.co.uk/news/10284448/ticker.sjson', '/home/mat/pkgs/bbcbreaking/news.yaml', false)
+get_news('http://news.bbc.co.uk/sol/ukfs_sport/hi/front_page/ticker.json','/home/mat/pkgs/bbcbreaking/sports.yaml', true)

@@ -85,4 +85,4 @@ def to_file(map, filename)
 end
 
 get_news('http://www.bbc.co.uk/news/10284448/ticker.sjson', '/home/mat/pkgs/bbcbreaking/news.yaml', false)
-get_news('http://news.bbc.co.uk/sol/ukfs_sport/hi/front_page/ticker.json','/home/mat/pkgs/bbcbreaking/sports.yaml', true)
+get_news('http://www.bbc.co.uk/sport/0/16189337/ticker.sjson','/home/mat/pkgs/bbcbreaking/sports.yaml', true)

@@ -7,11 +7,11 @@ Confirmed working in Ruby 1.9.1
 
 *** LOCAL GEMS ***
 
-* bitly (0.4.0)
-* crack (0.1.8)
-* hashie (0.1.8)
-* htmlentities (4.2.0)
-* httparty (0.7.6)
-* oauth (0.3.6)
+* bitly (0.7.0)
+* crack (0.3.1)
+* hashie (1.2.0)
+* htmlentities (4.3.1)
+* httparty (0.8.3)
+* oauth (0.4.6)
 * ruby-hmac (0.4.0)
-* twitter (0.8.6)
+* twitter (2.2.5)

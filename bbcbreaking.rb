@@ -3,6 +3,7 @@
 
 require 'json'
 require 'net/http'
+require 'oauth'
 require 'twitter'
 require 'bitly'
 require 'yaml'
@@ -10,12 +11,20 @@ require 'htmlentities'
 
 def get_news(url, filename, include_prompt=false)
 	db = from_file(filename)
+
+  twitter_settings = {:site=>"http://api.twitter.com", :request_endpoint => 'http://api.twitter.com'}
+  oauth_consumer = OAuth::Consumer.new db['consumer_key'],db['consumer_secret'],twitter_settings
+
+  Twitter.configure do |config|
+    config.consumer_key = oauth_consumer.key
+    config.consumer_secret = oauth_consumer.secret
+    config.oauth_token = db['access_token']
+    config.oauth_token_secret = db['access_secret']
+  end
 	
-	oauth = Twitter::OAuth.new(db['consumer_key'],db['consumer_secret'])
-	oauth.authorize_from_access(db['access_token'], db['access_secret'])
+  client = Twitter::Client.new
 
-	client = Twitter::Base.new(oauth)
-
+  Bitly.use_api_version_3
 	bitly = Bitly.new(db['bitly_user'],db['bitly_apikey'])
 
 	coder = HTMLEntities.new
